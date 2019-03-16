@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rock, Paper, Scissors</title>
+</head>
+
+<body>
+
+
+
+  <div id='Game'>
+    <h1>Rock, Paper, Scissors vs. the computer!</h1>
+    <h2>Press r, p, or s to start playing!</h2>
+    
+  </div>
+
+
+
+  <script type="text/javascript">
+    var options = ['r', 'p', 's'];
+    var wins = 0;
+    var loses = 0;
+    var ties = 0;
+
+    document.onkeyup = function () {
+      var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+      // console.log(userGuess);
+
+      var computerGuess = options[Math.floor(Math.random() * options.length)];
+      // console.log(computerGuess);
+
+      if (userGuess == 'r' || userGuess == 'p' || userGuess == 's') {
+        // alert('Guessed Correctly');
+        if ((userGuess == 'r') && (computerGuess == 's')) {
+          wins++;
+          // alert("You win");
+        }
+        if ((userGuess == 's') && (computerGuess == 'p')) {
+          wins++;
+          // alert("You win");
+        }
+        if ((userGuess == 'p') && (computerGuess == 'r')) {
+          wins++;
+          // alert("You win");
+        }
+        if ((userGuess == 'r') && (computerGuess == 'p')) {
+          loses++;
+          // alert("You lose");
+        }
+        if ((userGuess == 's') && (computerGuess == 'r')) {
+          loses++;
+          // alert("You lose");
+        }
+        if ((userGuess == 'p') && (computerGuess == 's')) {
+          loses++;
+          // alert("You lose");
+        }
+        if ((userGuess == computerGuess)) {
+          ties++;
+          // alert("You tie");
+        }
+      } else {
+        alert('Choose either "r", "p", or "s" please!');
+      }
+
+      var html = 
+      "<h1>Rock, Paper, Scissors vs. the computer!</h1>" +
+      "<h2>Press r, p, or s to start playing!</h2>" +
+      "<p>Wins: " + wins + "</p>" +
+      "<p>Losses: " + loses + "</p>" +
+      "<p>Ties: " + ties + "</p>";
+
+      document.querySelector('#Game').innerHTML = html;
+    }
+  </script>
+
+</body>
+
+</html>
